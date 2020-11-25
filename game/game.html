@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Game</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="../js/all.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="game.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    
+    <script>
+    function middleFunction() {
+            document.body.scrollTop = 550;
+            document.documentElement.scrollTop = 550;
+        }
+    </script>
+</head>
+
+<body onload="middleFunction();">
+    <div id="wrap">
+        <div id="container">
+            <div id="header">
+                <!--圖-->
+                <ul id="menu">
+                    <li id="home"><a title="Home" class="link" href="../index.html">Home</a></li>
+                    <li id="game"><a title="Game" class="link" href="gindex.html">Game</a></li>
+                    <li id="dict"><a title="Dict" class="link" href="../dict.html">Dictionary</a></li>
+                    <li id="useful"><a title="Useful" class="link" href="../useful.html">Useful Links</a></li>
+                </ul>
+            </div> <!-- header -->
+
+            <div id="main">
+                <div id="main_container">
+                    <script type="text/javascript" src="phaser.min.js"></script>
+                    <script type="text/javascript" src="game.js"></script>
+                    <div id="gameDiv" class="game"></div>
+                </div>
+            </div>
+
+            <div id="footer">
+                <center>
+                    <br><br><br>
+                    <p>Share to...</p>
+                    <br>
+                    <button style="background: url(../images/facebook.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.facebook.com/sharer/sharer.php?u=https://ngkayuen05.github.io/cryptography/'"></button>
+
+                    <button style="background: url(../images/instagram.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.instagram.com/?hl=zh-hk'"></button>
+
+                    <button style="background: url(../images/github.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://github.com/'"></button>
+
+                    <button style="background: url(../images/share.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;"></button>
+                </center>
+            </div> <!-- footer -->
+
+        </div> <!-- container -->
+    </div> <!-- wrap -->
+
+    <button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+    <script type="text/javascript" src="../js/topButton.js"></script>
+
+</body></html>

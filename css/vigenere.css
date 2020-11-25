@@ -1,0 +1,108 @@
+#vigTable {
+    display: inline-block;
+    margin: 0px 20px 30px -60px;
+    vertical-align: top;
+}
+
+#vtable {
+    width: 90vh;
+    table-layout: fixed;
+}
+
+#vtable td {
+    width: 33.33%;
+}
+
+#converter {
+    display: inline-block;
+    margin: 0 -50px 0 80px;
+}
+
+textarea {
+    font-size: 20px;
+    line-height: 24px;
+    border-radius: 5px;
+    padding: 8px;
+    width: 25em;
+    height: 7em;
+    box-shadow: 1px 2px 10px -2px rgba(0, 0, 0, 0.5);
+    border: none;
+}
+
+#keys {
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 1px 2px 10px -2px rgba(0, 0, 0, 0.5);
+}
+
+#etable {
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+    background: white;
+    border: none;
+}
+
+/*
+table.highlight {
+    margin-left: 20;
+    margin-right: 20;
+}
+
+table {
+    /float: left;
+    /width: 47%;
+    margin-left: auto;
+    margin-right: auto;
+}
+*/
+table.highlight td:before {
+    background: rgb(255, 255, 255, 0.15);
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+table.highlight tr:hover {
+    /* row highlight */
+    background-color: orange;
+}
+
+.highlight tr td:hover::after {
+    /* col highlight */
+    background-color: yellow;
+    opacity: 0.4;
+    z-index: 1;
+}
+
+.highlight td:hover::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1000em;
+    left: 0;
+    top: -555em;
+    z-index: -1;
+}
+
+.highlight {
+    overflow: hidden;
+}
+
+.highlight td,
+.highlight th {
+    position: relative;
+    outline: 0;
+}
+
+.highlight th {
+    background: #fff;
+    outline: 2px solid #ccc;
+    z-index: 2;
+}

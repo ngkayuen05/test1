@@ -1,0 +1,162 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Home</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- piropbox -->
+    <link rel="stylesheet" href="css/pirobox.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
+    <script type="text/javascript" src="js/jquery.tools.js"></script>
+    <script type="text/javascript" src="js/jquery.custom1.js"></script>
+    <script type="text/javascript" src="js/jquery.reveal.js"></script>
+
+    <!-- tiles -->
+    <link rel="stylesheet" href="css/tiles.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="container">
+            <div id="header">
+                <!--圖-->
+                <ul id="menu">
+                    <li id="home"><a title="Home" class="link" href="index.html">Home</a></li>
+                    <li id="game"><a title="Game" class="link" href="game/gindex.html">Game</a></li>
+                    <li id="dict"><a title="Dict" class="link" href="dict.html">Dictionary</a></li>
+                    <li id="useful"><a title="Useful" class="link" href="useful.html">Useful Links</a></li>
+                </ul>
+
+                <!-- pirobox -->
+                <div id="main_box">
+                    <div id="preview_bg">
+                        <div class="scrollable">
+                            <div class="items">
+                                <div class="item">
+                                    <div class="prev_img_bor">
+                                        <img src="images/poster1.png" id="poster" alt="" />
+                                    </div>
+                                    <p>Wanna have some fun? <br> Come and start the adventure with sea star!<br>
+                                        <a href="#" class="buttons" id="alink"><span>Click here</span></a>
+                                    </p>
+                                </div> <!-- item -->
+
+                                <div class="item">
+                                    <div class="prev_img_bor">
+                                        <img src="images/poster2.png" id="poster" alt="" />
+                                    </div>
+                                    
+                                    <p>This is a website about Crytpography. You may try different encryption and decryption method here.<br>
+                                        <a href="#" class="buttons" id="alink"><span>Read more</span></a>
+                                    </p>
+                                </div> <!-- item -->
+                            </div> <!-- items -->
+                        </div> <!-- scrollable -->
+                        <div class="navi"> </div>
+                    </div>
+                </div>
+            </div> <!-- header -->
+
+
+            <div id="main">
+                <!-- main container -->
+                <section class="tiles">
+                    <article class="style1">
+                        <span class="image">
+                            <img src="images/pink.png" alt="" />
+                        </span>
+                        <a href="caesar.html">
+                            <h2>Caesar Cipher</h2>
+                            <div class="content">
+                                <p>Caesar cipher is one of the earliest known and simplest ciphers...</p>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="style2">
+                        <span class="image">
+                            <img src="images/orange.png" alt="" />
+                        </span>
+                        <a href="playfair.html">
+                            <h2>Playfair Cipher</h2>
+                            <div class="content">
+                                <p>Playfair cipher was the first practical digraph substitution cipher...</p>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="style3">
+                        <span class="image">
+                            <img src="images/green.png" alt="" />
+                        </span>
+                        <a href="vigenere.html">
+                            <h2>Vigenère Cipher</h2>
+                            <div class="content">
+                                <p>Vigenere cipher is a poly-alphabetic substitution system that use a key and a double-entry table...</p>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="style4">
+                        <span class="image">
+                            <img src="images/blue.png" alt="" />
+                        </span>
+                        <a href="aes.html">
+                            <h2>Advanced Encryption Standard (AES)</h2>
+                            <div class="content">
+                                <p>AES is a specification for the encryption of electronic data...</p>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="style5">
+                        <span class="image">
+                            <img src="images/bluedd.png" alt="" />
+                        </span>
+                        <a href="rsanum.html">
+                            <h2>RSA</h2>
+                            <div class="content">
+                                <p>RSA is one of the first public-key cryptosystems...</p>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="style6">
+                        <span class="image">
+                            <img src="images/purple.png" alt="" />
+                        </span>
+                        <a href="quiz.html">
+                            <h2>Quiz</h2>
+                            <div class="content">
+                                <p>Click here to test your concept...</p>
+                            </div>
+                        </a>
+                    </article>
+                </section>
+
+            </div> <!-- main -->
+
+            <div id="footer">
+                <center>
+                    <br><br><br>
+                    Share to...
+                    <br>
+                    <button style="background: url(images/facebook.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.facebook.com/sharer/sharer.php?u=https://ngkayuen05.github.io/cryptography/'"></button>
+
+                    <button style="background: url(images/instagram.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.instagram.com/?hl=zh-hk'"></button>
+
+                    <button style="background: url(images/github.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://github.com/'"></button>
+
+                    <button style="background: url(images/share.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;"></button>
+                </center>
+            </div> <!-- footer -->
+
+        </div> <!-- container -->
+    </div> <!-- wrap -->
+
+    <button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+    <script type="text/javascript" src="js/topButton.js"></script>
+    
+</body></html>

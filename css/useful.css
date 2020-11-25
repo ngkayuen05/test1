@@ -1,0 +1,35 @@
+.container2 {
+    background-color: #fff;
+    margin: 0px auto;
+    border-radius: 10px;
+    padding: 40px;
+    width: 85%;
+}
+
+.col1_3, .col2_3{
+    /width: 264;
+    width: 33.33%;
+    float: left;
+    /margin-right: 60px;
+}
+
+.col3_3 {
+    width: 33.33%;
+    float: right;
+}
+
+.col3{
+    padding-bottom: 20px;
+    width: 100%;
+    display: block;
+}
+
+.col3 img{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.col3 p{
+    padding-left: 10px;
+    padding-right: 10px;
+}

@@ -1,0 +1,211 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Simple RSA</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/select.css">
+    <script type="text/javascript" src="js/all.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/rsanum.css">
+    <script type="text/javascript" src="js/rsanum.js"></script>
+
+    <!-- animatee.css -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+
+</head>
+
+<body onload="crear_select();">
+    <div id="wrap">
+        <div id="container">
+            <div id="header">
+                <!--圖-->
+                <ul id="menu">
+                    <li id="home"><a title="Home" class="link" href="index.html">Home</a></li>
+                    <li id="game"><a title="Game" class="link" href="game/gindex.html">Game</a></li>
+                    <li id="dict"><a title="Dict" class="link" href="dict.html">Dictionary</a></li>
+                    <li id="useful"><a title="Useful" class="link" href="useful.html">Useful Links</a></li>
+                </ul>
+            </div> <!-- header -->
+
+
+            <div id="main">
+                <div class="animated slideInDown faster">
+                    <div class="box">
+                        <button type="button" class="updown" id="btn" onclick="updown();"></button>
+                        <div class="content">
+                            <h1> Introduction </h1>
+
+                            <p> RSA is an asymmetric system. It is required to use a public key and private key to do the encryption and decryption. Once a message has been encrypted with the public key, it can only be decrypted the corresponding private key. So, receiver need to keep their own private secure and share around the public one. </p>
+
+                            <p> The creation a public key based on two prime numbers (p and q). In real situation, both prime numbers should choose from a sufficiently large set to avoid others to get the key value. Both sender and receiver must know the common value n. Anyone can use the public key (e) to encrypt a message while only receiver knows the value of private key (d). </p>
+
+                            <p> <span id=popWord>n</span> is calculated by <span id=popWord>p * q</span>. </p>
+                            <p>User can select e such that e is relatively prime to <span id=popWord>&#934;(n) = (p - 1)(q - 1)</span>. </p>
+                            <p> <span id=popWord>d</span> value can be determined using the extended Euclid's algorithm. </p>
+                            <p>However, RSA is a relatively slow algorithm, it is hardly used to encrypt user data. RSA is used common in passing around encrypted shared keys for symmetric key cryptography, that perform encryption at a faster speed.</p>
+                        </div>
+                    </div>
+                </div> <!-- animated slideInDown faster -->
+
+                <div id="main_container">
+                    <p>Pick 2 primes (P & Q): </p>
+                    <div class="select_mate" data-mate-select="active">
+                        <select name="" onclick="return false;" id="">
+                            <option value="">Choose a prime number</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="5">5</option>
+                            <option value="7">7</option>
+                            <option value="11">11</option>
+                            <option value="13">13</option>
+                            <option value="17">17</option>
+                            <option value="19">19</option>
+                            <option value="23">23</option>
+                            <option value="29">29</option>
+                            <option value="31">31</option>
+                            <option value="37">37</option>
+                            <option value="41">41</option>
+                            <option value="43">43</option>
+                            <option value="47">47</option>
+                        </select>
+
+                        <p class="selectedOption" onclick="open_select(this)"></p><span onclick="open_select(this)" class="icon_select_mate"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" />
+                                <path d="M0-.75h24v24H0z" fill="none" />
+                            </svg></span>
+                        <div class="cont_list_select_mate">
+                            <ul class="cont_select_int"> </ul>
+                        </div>
+                    </div>
+
+                    <div class="select_mate" data-mate-select="active">
+                        <select name="" onclick="return false;" id="">
+                            <option value="">Choose another prime number</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="5">5</option>
+                            <option value="7">7</option>
+                            <option value="11">11</option>
+                            <option value="13">13</option>
+                            <option value="17">17</option>
+                            <option value="19">19</option>
+                            <option value="23">23</option>
+                            <option value="29">29</option>
+                            <option value="31">31</option>
+                            <option value="37">37</option>
+                            <option value="41">41</option>
+                            <option value="43">43</option>
+                            <option value="47">47</option>
+                        </select>
+
+                        <p class="selectedOption" onclick="open_select(this)"></p><span onclick="open_select(this)" class="icon_select_mate"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" />
+                                <path d="M0-.75h24v24H0z" fill="none" />
+                            </svg></span>
+                        <div class="cont_list_select_mate">
+                            <ul class="cont_select_int"> </ul>
+                        </div>
+                    </div>
+
+                    <div id="word">
+                        <div id="bg">
+                            n = p × q = <span id="PQ"></span>
+                        </div>
+
+                        <div id="bg">
+                            <i>&#934;(n)</i> = (p - 1)(q - 1) = <span id="phi"></span>
+                        </div>
+
+                        <div id="bg">
+                            Select e (Public Key) such that e is relatively prime to <i>&#934;(n)</i> and less than <i>&#934;(n)</i> : <br>
+
+                            The factor of <i>&#934;(n)</i> are: <br>
+                            <span id="factor"></span> <br>
+
+                            So e should not multiply by the factors and should not divide by <i>&#934;(n)</i>.<br>
+                            We choose e = <span id="e"></span>. Of course, you can choose another e value.
+                        </div>
+
+                        <div id="bg">
+                            Determine d (Private Key) such that <i>de</i> &#8801; 1 (mod n) and d &#60; n <br>
+                            d can be calculated using the <a href="https://www.geeksforgeeks.org/euclidean-algorithms-basic-and-extended/">Extended Euclid's alagorithm</a> <br>
+                            We will find that d × e = (k × <i>&#934;(n)</i> ) + 1 <br>
+
+                            d = <span id="d"></span>
+
+                            <div id=dtable></div>
+
+                        </div>
+
+                        <br>
+
+                        Relationship between message encryption and decryption of RSA
+                        <center><img src="images/rsa.png" height="300"></center>
+
+                        <div id="bg">
+                            Encryption by Alice with Bob's Public key: <br>
+                            Plaintext: <b> M &#60; n </b> <br>
+                            Ciphertext: <b>C = M<sup>e</sup> (mod n)</b> <br>
+                        </div>
+
+                        <div id="bg">
+                            Decryption by Bob with Bob's Public key: <br>
+                            Plaintext: <b> C </b> <br>
+                            Ciphertext: <b>M = C<sup>d</sup> (mod n)</b> <br>
+                        </div>
+                        <br>
+
+                        Encryption for a word: <br>
+                        <div id="bg">
+                            <textarea id="M1">A</textarea>
+                            <button id="submit1"></button>
+                            <textarea id="C1"></textarea> <br>
+                            <b>C = M<sup>e</sup> (mod n)</b> <br>
+
+                            <span id="EText"></span>
+                        </div>
+                        <br>
+
+                        Decryption from the encrypted text:<br>
+                        <div id="bg">
+                            <textarea id="C2"></textarea>
+                            <button id="submit2"></button>
+                            <textarea id="M2"></textarea> <br>
+                            <b>M = C<sup>d</sup> (mod n)</b> <br>
+
+                            <span id="DText"></span>
+                        </div>
+                    </div>
+
+
+
+                </div> <!-- main_container -->
+
+            </div>
+
+            <div id="footer">
+                <center>
+                    <br><br><br>
+                    <p>Share to...</p>
+                    <br>
+                    <button style="background: url(images/facebook.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.facebook.com/sharer/sharer.php?u=https://ngkayuen05.github.io/cryptography/'"></button>
+
+                    <button style="background: url(images/instagram.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.instagram.com/?hl=zh-hk'"></button>
+
+                    <button style="background: url(images/github.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://github.com/'"></button>
+
+                    <button style="background: url(images/share.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;"></button>
+                </center>
+            </div> <!-- footer -->
+
+        </div> <!-- container -->
+    </div> <!-- wrap -->
+
+    <button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+    <script type="text/javascript" src="js/topButton.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,238 @@
+img {
+    
+}
+
+#poster {
+    width: 380px;
+    height: 200px;
+    padding: 1px 0px 1px 0px;
+    border: none;
+}
+
+#main_box {
+    width: 760px;
+    padding-right: 20px;
+    padding-top: 380px;
+    min-height: 110px;
+    margin: auto;
+    clear: both;
+}
+
+#preview_bg {
+    /*background: url(images/preview_bg.jpg);*/
+    background-color: #E6E6FA;
+    opacity: 0.95;
+    width: 760px;
+    height: 232px;
+    padding-top: 8px;
+    clear: both;
+    border-radius: 10px;
+}
+
+.prev_img_bor {
+    background: url(../images/prev_img_bor.png) no-repeat;
+    padding: 8px;
+    width: 400px;
+    border-radius: 5px;
+}
+
+/*
+scroll styles here
+*/
+.item {
+    width: 760px;
+    height: 250px;
+    padding: 0px 5px 0px 10px;
+}
+
+.item img {
+    float: left;
+}
+
+.scrollable {
+    position: relative;
+    overflow: hidden;
+    width: 760px;
+    height: 232px;
+}
+
+.scrollable .items {
+    width: 20000em;
+    position: absolute;
+}
+
+.scrollable .items div {
+    float: left;
+}
+
+.scrollable .items .item {
+    overflow: hidden;
+}
+
+.scrollable .items .item p {
+    line-height: 2em;
+    padding-right: 20px;
+    font-size: 16px;
+    margin-left: 420px;
+}
+
+.navi {
+    width: auto;
+    height: 20px;
+    float: right;
+    margin: 5px 0;
+}
+
+.navi a {
+    width: 23px;
+    cursor: pointer;
+    height: 24px;
+    float: left;
+    margin: 0 0 0 1px;
+    background: url(../images/prev_but.png) no-repeat scroll right top;
+    display: block;
+    font-size: 1px;
+    position: relative;
+    z-index: 1;
+}
+
+.navi a:hover,
+.navi a.active {
+    background-position: left top;
+    margin: 0 0 0 1px;
+    background: url(../images/prev_but_hov.png) no-repeat scroll right top;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ------------------------------------------------------------------------
+DO NOT CHANGE
+------------------------------------------------------------------------- */
+
+div.pp_overlay {
+    background: #000;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 9500;
+}
+
+div.pp_pic_holder {
+    display: none;
+    position: absolute;
+    width: 100px;
+    z-index: 10000;
+}
+
+@media screen and (max-width: 1280px) {
+    #poster {
+        width: calc(380px * (1200/1350));
+        height: calc(200px * (1200/1350));
+    }
+    
+    #main_box,
+    .item,
+    .scrollable {
+        width: calc(760px * (1200/1350));
+        min-height: calc(110px * (1200/1350));
+    }
+    
+    #preview_bg {
+        width: calc(760px * (1200/1350));
+        height: calc(232px * (1200/1350));
+    }
+
+    .prev_img_bor {
+        width: calc(400px * (1200/1350));
+    }
+
+    .scrollable .items .item p {
+        font-size: 15px;
+        margin-left: 380px;
+    }
+    
+    #alink {
+        font-size: 15px;
+    }
+    
+    .navi {
+        margin-top: -30px;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    #poster {
+        width: calc(380px * (900/1350));
+        height: calc(200px * (900/1350));
+    }
+    
+    #main_box,
+    .item,
+    .scrollable {
+        width: calc(760px * (900/1350));
+        min-height: calc(110px * (900/1350));
+    }
+    
+    #preview_bg {
+        width: calc(760px * (900/1350));
+        height: calc(245px * (900/1350));
+    }
+
+    .prev_img_bor {
+        width: calc(400px * (900/1350));
+    }
+
+    .scrollable .items .item p {
+        font-size: 12px;
+        margin-left: 280px;
+    }
+    
+    #alink {
+        font-size: 12px;
+    }
+    
+    .navi {
+        margin-top: -75px;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    #poster {
+        width: calc(380px * (700/1350));
+        height: calc(200px * (700/1350));
+    }
+    
+    #main_box,
+    .item,
+    .scrollable {
+        width: calc(760px * (700/1350));
+        min-height: calc(110px * (700/1350));
+    }
+    
+    #preview_bg {
+        width: calc(760px * (700/1350));
+        height: calc(265px * (700/1350));
+    }
+
+    .prev_img_bor {
+        width: calc(400px * (700/1350));
+    }
+
+    .scrollable .items .item p {
+        font-size: 1.5vh;
+        margin-left: 218px;
+        padding: 0;
+        margin-top: 2px;
+    }
+    
+    #alink {
+        font-size: 1.5vh;
+    }
+    
+    .navi {
+        margin-top: -95px;
+    }
+}

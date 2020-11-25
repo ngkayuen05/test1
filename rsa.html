@@ -1,0 +1,164 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>RSA</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/select.css">
+    <script type="text/javascript" src="js/all.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/rsa.css">
+    <script type="text/javascript" src="js/rsa.js"></script>
+
+    <!-- rsa lib-->
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/2.3.1/jsencrypt.min.js"></script>
+
+    <!-- animatee.css -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+
+</head>
+
+<body onload="crear_select();">
+    <div id="wrap">
+        <div id="container">
+            <div id="header">
+                <!--圖-->
+                <ul id="menu">
+                    <li id="home"><a title="Home" class="link" href="index.html">Home</a></li>
+                    <li id="game"><a title="Game" class="link" href="game/gindex.html">Game</a></li>
+                    <li id="dict"><a title="Dict" class="link" href="dict.html">Dictionary</a></li>
+                    <li id="useful"><a title="Useful" class="link" href="useful.html">Useful Links</a></li>
+                </ul>
+            </div> <!-- header -->
+
+            <div id="main">
+                <div class="animated slideInDown faster">
+                    <div class="box">
+                        <button type="button" class="updown" id="btn" onclick="updown();"></button>
+                        <div class="content">
+                            <h1>You can try to encrypt a message by RSA here :D </h1>
+                            <p>Typical RSA key sizes are 1024, 2048 or 4096 bits. Different length of prime number is generated depending on the key size picked. </p>
+                            <p>However, it is not secure to have rsa encrption in Javascript. It is better use OpenSSL. </p>
+                            <p>Click <a href="https://www.openssl.org/">here</a> to get OpenSSL. </p>
+                        </div>
+                    </div>
+                </div> <!-- animated slideInDown faster -->
+
+                <div id="main_container">
+                    <table>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                <div class="select_mate" data-mate-select="active">
+                                    <select name="" onclick="return false;" id="">
+                                        <option value="0">Choose a key length</option>
+                                        <option value="1">512 bits</option>
+                                        <option value="2">1024 bits</option>
+                                        <option value="3">2048 bits</option>
+                                        <option value="4">4096 bits</option>
+                                    </select>
+
+                                    <p class="selectedOption" onclick="open_select(this)"></p><span onclick="open_select(this)" class="icon_select_mate"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" />
+                                            <path d="M0-.75h24v24H0z" fill="none" />
+                                        </svg></span>
+                                    <div class="cont_list_select_mate">
+                                        <ul class="cont_select_int"> </ul>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="td1">Private Key</td>
+                            <td>
+                                <textarea id="privkey">-----BEGIN RSA PRIVATE KEY-----
+MIICXQIBAAKBgQDlOJu6TyygqxfWT7eLtGDwajtNFOb9I5XRb6khyfD1Yt3YiCgQ
+WMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76xFxdU6jE0NQ+Z+zEdhUTooNR
+aY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4gwQco1KRMDSmXSMkDwIDAQAB
+AoGAfY9LpnuWK5Bs50UVep5c93SJdUi82u7yMx4iHFMc/Z2hfenfYEzu+57fI4fv
+xTQ//5DbzRR/XKb8ulNv6+CHyPF31xk7YOBfkGI8qjLoq06V+FyBfDSwL8KbLyeH
+m7KUZnLNQbk8yGLzB3iYKkRHlmUanQGaNMIJziWOkN+N9dECQQD0ONYRNZeuM8zd
+8XJTSdcIX4a3gy3GGCJxOzv16XHxD03GW6UNLmfPwenKu+cdrQeaqEixrCejXdAF
+z/7+BSMpAkEA8EaSOeP5Xr3ZrbiKzi6TGMwHMvC7HdJxaBJbVRfApFrE0/mPwmP5
+rN7QwjrMY+0+AbXcm8mRQyQ1+IGEembsdwJBAN6az8Rv7QnD/YBvi52POIlRSSIM
+V7SwWvSK4WSMnGb1ZBbhgdg57DXaspcwHsFV7hByQ5BvMtIduHcT14ECfcECQATe
+aTgjFnqE/lQ22Rk0eGaYO80cc643BXVGafNfd9fcvwBMnk0iGX0XRsOozVt5Azil
+psLBYuApa66NcVHJpCECQQDTjI2AQhFc1yRnCU/YgDnSpJVm1nASoRUnU8Jfm3Oz
+uku7JUXcVpt08DFSceCEX9unCuMcT72rAQlLpdZir876
+-----END RSA PRIVATE KEY-----</textarea>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="td1">Public Key</td>
+                            <td>
+                                <textarea id="pubkey">-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDlOJu6TyygqxfWT7eLtGDwajtN
+FOb9I5XRb6khyfD1Yt3YiCgQWMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76
+xFxdU6jE0NQ+Z+zEdhUTooNRaY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4
+gwQco1KRMDSmXSMkDwIDAQAB
+-----END PUBLIC KEY-----</textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="td1">Text to encrypt</td>
+                            <td><textarea id="input">This is a test!</textarea><br></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>
+
+                                <div id="btnn">
+                                    <div id="btnDisplay">
+                                        <img src="images/buttonen.png" height="60px" title="Click to Sumbit answer" />
+                                        <span id="spanbtn"><input type="image" src="images/buttonen2.png" id="en" onclick="doEncrypt(true);" height="60px"></span>
+                                    </div>
+
+                                    <div id="btnDisplay">
+                                        <img src="images/buttonde.png" height="60px" title="Click to Sumbit answer" style="margin-left: 20px;" />
+                                        <span id="spanbtn"><input type="image" src="images/buttonde2.png" id="de" onclick="doEncrypt(false);" height="60px" style="margin-left: 20px;" /></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="td1">Result</td>
+                            <td>
+                                <textarea id="result"></textarea>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </div> <!-- main_container -->
+
+            </div>
+
+            <div id="footer">
+                <center>
+                    <br><br><br>
+                    <p>Share to...</p>
+                    <br>
+                    <button style="background: url(images/facebook.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.facebook.com/sharer/sharer.php?u=https://ngkayuen05.github.io/cryptography/'"></button>
+
+                    <button style="background: url(images/instagram.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.instagram.com/?hl=zh-hk'"></button>
+
+                    <button style="background: url(images/github.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://github.com/'"></button>
+
+                    <button style="background: url(images/share.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;"></button>
+                </center>
+            </div> <!-- footer -->
+
+        </div> <!-- container -->
+    </div> <!-- wrap -->
+
+    <button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+    <script type="text/javascript" src="js/topButton.js"></script>
+
+</body></html>

@@ -1,0 +1,113 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Quiz</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/all.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/quiz.css">
+    <script type="text/javascript" src="js/quiz.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+</head>
+
+<body onload="randomQ(),answerTracker();">
+    <div id="wrap">
+        <div id="container">
+            <div id="header">
+                <!--圖-->
+                <ul id="menu">
+                    <li id="home"><a title="Home" class="link" href="index.html">Home</a></li>
+                    <li id="game"><a title="Game" class="link" href="game/gindex.html">Game</a></li>
+                    <li id="dict"><a title="Dict" class="link" href="dict.html">Dictionary</a></li>
+                    <li id="useful"><a title="Useful" class="link" href="useful.html">Useful Links</a></li>
+                </ul>
+            </div> <!-- header -->
+
+            <div id="main">
+
+                <div class="quiz_container">
+                    <div class="question_number">
+                        <h3>Question <span class="Qnum"></span> of <span class="totalQ"></span>
+                            <span id="timer">Start</span>
+                        </h3>
+                    </div>
+
+                    <div class="question"></div>
+
+                    <div class="option">
+                        <div id="0" class="option1" onclick="check(this)"></div>
+                        <div id="1" class="option2" onclick="check(this)"></div>
+                        <div id="2" class="option3" onclick="check(this)"></div>
+                        <div id="3" class="option4" onclick="check(this)"></div>
+                    </div>
+
+                    <br>
+                    <div id="btnn">
+                        <div id="btnDisplay">
+                            <img src="images/buttonnext.png" height="60px" title="Click to Sumbit answer" />
+                            <span id="spanbtn"><input type="image" src="images/buttonnext2.png" class="btn" onclick="next();" height="60px" /></span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="answer_tracker"></div>
+
+                </div> <!-- quiz_container -->
+
+                <div class="endGame">
+                    <div class="box">
+                        <h1>
+                            <img src="images/champion.png" id="cham">
+                            <span class="percent" style="font-size: 45px;"></span>
+
+                            <br>
+                            <span class="correctAns"></span> out of <span class="totalQ2"></span> questions correct. <br>
+
+                            <span class="text" style="font-size: 40px;"></span>
+
+                        </h1>
+
+                        <div id="btnn">
+                            <div id="btnDisplay1">
+                                <img src="images/buttontry.png" height="60px" title="Click to Sumbit answer" />
+                                <span id="spanbtn"><input type="image" src="images/buttontry2.png" class="retry" onclick="retry();" height="60px" /></span>
+                            </div>
+                        </div>
+
+                        <button type="button" class="allAns" id="btn" onclick="allAns();"></button>
+                        <div class="explain">See the explaination &nbsp;&nbsp;</div>
+                        <br><br>
+                        <div class="ans">
+                            <div id="answer">
+                                <span class="QAE"></span>
+                            </div>
+                        </div>
+                    </div> <!-- box -->
+                </div> <!-- endGame -->
+            </div> <!-- main -->
+
+            <div id="footer">
+                <center>
+                    <br><br><br>
+                    <p>Share to...</p>
+                    <br>
+                    <button style="background: url(images/facebook.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.facebook.com/sharer/sharer.php?u=https://ngkayuen05.github.io/cryptography/'"></button>
+
+                    <button style="background: url(images/instagram.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.instagram.com/?hl=zh-hk'"></button>
+
+                    <button style="background: url(images/github.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://github.com/'"></button>
+
+                    <button style="background: url(images/share.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;"></button>
+                </center>
+            </div> <!-- footer -->
+
+        </div> <!-- container -->
+    </div> <!-- wrap -->
+
+    <button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+    <script type="text/javascript" src="js/topButton.js"></script>
+
+</body></html>

@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'kongtextRegular';
+  src: url('kongtextRegular.ttf') format("truetype"),
+      url('kongtextrRgular.woff') format("woff"),
+      url('kongtextrRgular.svg#kongtextrRgular') format('svg');   
+}
+
+a,
+a:visited {
+    color: #2E86C1;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+a:hover {
+    color: #322c92;
+}
+
+#gameDiv {
+    /border-right: 5px;
+    /height: 620px;
+    margin-left: -110px;
+    /margin: 0 auto;
+}

@@ -1,0 +1,123 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Caesar</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/all.js"></script>
+
+    <!-- about caesar -->
+    <link rel="stylesheet" type="text/css" href="css/caesar.css">
+    <script type="text/javascript" src="js/caesar.js"></script>
+
+    <!-- animatee.css -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+
+    <!-- sweet alert -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.2.0/sweetalert2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.2.0/sweetalert2.min.js"></script>
+</head>
+
+<body onload='init();'>
+    <div id="wrap">
+        <div id="container">
+            <div id="header">
+                <!--圖-->
+                <ul id="menu">
+                    <li id="home"><a title="Home" class="link" href="index.html">Home</a></li>
+                    <li id="game"><a title="Game" class="link" href="game/gindex.html">Game</a></li>
+                    <li id="dict"><a title="Dict" class="link" href="dict.html">Dictionary</a></li>
+                    <li id="useful"><a title="Useful" class="link" href="useful.html">Useful Links</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+                <div class="animated slideInDown faster">
+                    <div class="box">
+                        <button type="button" class="updown" id="btn" onclick="updown();"></button>
+                        <div class="content">
+                            <h1> Introduction </h1>
+                            <p> Caesar cipher is one of the earliest known and simplest ciphers. It is a type of substitution cipher in which each letter in the plaintext is 'shifted' a certain number of places down the alphabet. The Caesar Cipher offers essentially no communication security, and it will be shown that it can be easily broken even by hand. </p>
+                            <h1> Mathematical Description </h1>
+                            <p> Each letter can represent with numbers, i.e. 'A'=0, 'B'=1, 'C'=2, ... , 'Z'=25. For the encryption of a letter x by a shift n, the Caesar cipher function <b>E<sub>n</sub>(x)</b> can be represented mathematically as: </p>
+                            <p style="text-align: center"> <span id=popWord> E<sub>n</sub>(x) = (x+n) mod 26 </span></p>
+                            <p> Similarly, decryption function <b>Dn(x)</b> can be represented as: </p>
+                            <p style="text-align: center"><span id=popWord> D<sub>n</sub>(x) = (x-n) mod 26 </span></p><br>
+                            <p>You can try to encrypt or decrypt a message below :D</p>
+                            <p>Once you generate a random text, it is unable to click Encrypt and Decrypt button until you press on Sumbit or Clear button</p>
+                        </div>
+                    </div>
+                </div> <!-- animated slideInDown faster -->
+
+                <div id="main_container">
+                    <div id="wheel">
+                        <canvas id="caesar" width="500" height="500"></canvas>
+                        <input id="shift" type="text" value="1" maxlength="2" /> <!-- input key 位-->
+                    </div> <!-- wheel -->
+
+                    <div id="converter">
+                        <div id="btnn">
+                            <div id="btnDisplay">
+                                <img src="images/buttonrandom.png" height="60px" />
+                                <span id="spanbtn"><input type="image" src="images/buttonrandom2.png" id="btn_ran" onclick="genQuote();" style="height: 60px" alt="" title="Click to have a random ciphertext" /></span>
+                            </div>
+
+                            <div id="btnDisplay">
+                                <img src="images/buttonen.png" height="60px" />
+                                <span id="spanbtn"><input type="image" src="images/buttonen2.png" id="Encrypt" onclick="doCrypt(false);" height="60px" alt="" title="Click to do Encryption" /></span>
+                            </div>
+
+                            <div id="btnDisplay">
+                                <img src="images/buttonde.png" height="60px" />
+                                <span id="spanbtn"><input type="image" src="images/buttonde2.png" id="Decrypt" onclick="doCrypt(true);" height="60px" alt="" title="Click to do Decryption" /></span>
+                            </div>
+                            <div id="btnDisplay">
+                                <img src="images/buttonbrute.PNG" height="60px" />
+                                <span id="spanbtn"><input type="image" src="images/buttonbrute2.png" id="brute" onclick="bruteForce();" height="60px" alt="" title="Click to do Brute Forch Search" /></span>
+                            </div>
+                        </div> <!-- btnn -->
+
+                        <p id="topic">Input</p>
+                        <textarea id="question" placeholder="Input text here/ Click random button to have a question~">Wash hand hand</textarea>
+                        <p id="topic">Output</p>
+                        <textarea id="answer" placeholder="Answer is coming~"></textarea>
+
+                        <div id="btnn1">
+                            <div id="btnDisplay_l">
+                                <img src="images/buttonsubmit.png" height="60px" />
+                                <span id="spanbtn"><input type="image" src="images/buttonsubmit2.png" id="btn_sumbit" onclick="ran();" height="60px" alt="" title="Click to Sumbit answer" /></span>
+                            </div>
+
+                            <div id="btnDisplay_r">
+                                <img src="images/buttonclear.png" height="60px" />
+                                <span id="spanbtn" style="float: right;"><input type="image" src="images/buttonclear2.png" id="btn_clear" onclick="clearAll();" height="60px" /></span>
+                            </div>
+                        </div> <!-- btnn -->
+
+                    </div> <!-- converter -->
+                </div> <!-- main container -->
+            </div><!-- main -->
+
+            <div id="footer">
+                <center>
+                    <br><br><br>
+                    Share to...
+                    <br>
+                    <button style="background: url(images/facebook.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.facebook.com/sharer/sharer.php?u=https://ngkayuen05.github.io/cryptography/'"></button>
+
+                    <button style="background: url(images/instagram.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.instagram.com/?hl=zh-hk'"></button>
+
+                    <button style="background: url(images/github.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://github.com/'"></button>
+
+                    <button style="background: url(images/share.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;"></button>
+                </center>
+            </div> <!-- footer -->
+
+        </div> <!-- container -->
+    </div> <!-- wrap -->
+
+    <button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+    <script type="text/javascript" src="js/topButton.js"></script>
+
+</body></html>

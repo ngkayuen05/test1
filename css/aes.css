@@ -1,0 +1,79 @@
+#main_container {
+    width: 85%;
+    text-align: left;
+    background-color: #fff;
+    margin: 0px auto;
+    margin-top: 40px;
+    border-radius: 10px;
+    padding: 40px 60px;
+}
+
+#td1 {
+    text-align: right;
+    padding: 10px;
+    vertical-align: super;
+    font-weight: 300;
+}
+
+#img1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+}
+
+textarea {
+    font-size: 20px;
+    line-height: 24px;
+    border-radius: 5px;
+    padding: 8px;
+    width: 32em;
+    height: 7em;
+    box-shadow: 1px 2px 10px -2px rgba(0, 0, 0, 0.3);
+    margin: 8px auto;
+    font-weight: 300;
+    float: left;
+}
+
+#key,
+#iv {
+    width: 25em;
+    height: 2em;
+}
+
+#word, #exampleTable {
+    font-size: 16px;
+    line-height: 2em;
+}
+
+#exampleBg {
+    background: #dcdcdc;
+    border-radius: 5px;
+    padding: 10px 40px;
+    margin: 10px auto;
+    box-shadow: 1px 2px 10px -2px rgba(0, 0, 0, 0.3);
+}
+
+#egkey,
+#egplain {
+    width: 15em;
+    height: 2em;
+}
+
+#btn_egKey,
+#btn_egPlain {
+    background: url(../images/arrow2.png);
+    width: 55px;
+    height: 55px;
+    border: none;
+    background-size: 55px;
+}
+
+#ktable table td,
+#plaintable table td {
+    border: 1px solid black;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    vertical-align: middle;
+}

@@ -1,0 +1,282 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>AES</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/select.css">
+    <script type="text/javascript" src="js/all.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/aes.css">
+    <script type="text/javascript" src="js/aes.js"></script>
+
+    <!-- sweet alert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <!-- aes lib -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/mode-ctr-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/pad-nopadding-min.js"></script>
+
+    <!-- animatee.css -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+
+</head>
+
+<body onload="crear_select();">
+    <div id="wrap">
+        <div id="container">
+            <div id="header">
+                <!--圖-->
+                <ul id="menu">
+                    <li id="home"><a title="Home" class="link" href="index.html">Home</a></li>
+                    <li id="game"><a title="Game" class="link" href="game/gindex.html">Game</a></li>
+                    <li id="dict"><a title="Dict" class="link" href="dict.html">Dictionary</a></li>
+                    <li id="useful"><a title="Useful" class="link" href="useful.html">Useful Links</a></li>
+                </ul>
+            </div> <!-- header -->
+
+
+            <div id="main">
+                <div class="animated slideInDown faster">
+                    <div class="box">
+                        <button type="button" class="updown" id="btn" onclick="updown();"></button>
+                        <div class="content">
+
+                            <h1> Introduction </h1>
+
+                            <p> Advanced Encryption Standard (AES) is a subset of the Rijndael block cipher and it is widely adopted symmetric encryption algorithm. AES is one of the common encryption methods. It mainly used to protect electronic data. Messaging apps like WhatsApp are using this algorithm. It supersedes the Data Encryption Standard (DES) due to the key size was longer. Key size of AES can be 128, 192 or 256 bits while DES encrypt data using 56 bits key. So that, cracking a 128 bits AES key would take a lot time that longer than the presumed age of the universe, AES consists a higher protection. </p>
+
+                            <h1> Operation </h1>
+                            <p>Key size is used to define the transformation rounds during the operation. AES has three version, with 10 rounds (128 bits keys), 12 rounds (192 bits keys) and 14 rounds (256 bits keys). Each round includes several processing steps:</p>
+                            <ol>
+                                <li><span id=popWord>SubBytes (S-box): </span> involves 16 independent byte-to-byte transformation</li>
+                                <li><span id=popWord>ShiftRow: </span> each row is shifted to the left by following rules:
+                                    <ol type="i">
+                                        <li>Row 1: no shift</li>
+                                        <li>Row 2: 1-byte shift</li>
+                                        <li>Row 3: 2-byte shift</li>
+                                        <li>Row 4: 3-byte shift</li>
+                                    </ol>
+                                </li>
+                                <li><span id=popWord>MixColumns: </span>transforms each column of the state to a new column to provide diffusion at the bit level
+                                    <ol type="i">
+                                        <li>Multiplication by 02: Left shift by 1 bit. If the MSB = 1 before shift, XOR the result with 1B<sub>16</sub></li>
+                                        <li>Multiplication by 03: Write 3 * x = 2 * x ⊕ x</li>
+                                    </ol>
+                                </li>
+
+                                <li><span id=popWord>AddRoundKey: </span>add (i.e. XOR) a round key word with each state column matrix</li>
+                            </ol>
+                            <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">See more in Wikipedia</a>
+                            <img src="images/aes.gif" id="img1">
+
+                            <h1> Mode </h1>
+                            <ol>
+                                <li>Electronic codebook (ECB)</li>
+                                <li>Cipher block chaining (CBC)</li>
+                                <li>Cipher feedback (CFB)</li>
+                                <li>Output feedback (OFB)</li>
+                                <li>Counter (CTR)</li>
+                            </ol>
+
+                        </div>
+                    </div>
+                </div> <!-- animated slideInDown faster -->
+
+                <div id="main_container">
+                    <!-- Custom select structure -->
+                    <div class="select_mate" data-mate-select="active">
+                        <select name="" onclick="return false;" id="">
+                            <option value="0">Choose a AES mode</option>
+                            <option value="1">Default</option>
+                            <option value="2">CTR</option>
+                            <option value="3">CBC</option>
+                        </select>
+
+                        <p class="selectedOption" onclick="open_select(this)"></p><span onclick="open_select(this)" class="icon_select_mate"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" />
+                                <path d="M0-.75h24v24H0z" fill="none" />
+                            </svg></span>
+                        <div class="cont_list_select_mate">
+                            <ul class="cont_select_int"> </ul>
+                        </div>
+                    </div>
+
+                    <br><br><br>
+
+                    <table>
+                        <tr>
+                            <td id="td1">Key </td>
+                            <td><textarea id="key" placeholder="Key can be random length">31323334353637383930313233343536</textarea></td>
+                        </tr>
+
+                        <tr>
+                            <td id="td1">IV</td>
+                            <td><textarea id="iv" placeholder="iv">0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f</textarea></td>
+                        </tr>
+
+                        <tr>
+                            <td id="td1">Input </td>
+                            <td><textarea id="input" placeholder="Text can be random length">Text can be a random length</textarea></td>
+                        </tr>
+
+                        <tr>
+                            <td id="td1">Output </td>
+                            <td><textarea id="return" placeholder="Result"></textarea></td>
+                        </tr>
+
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+
+                                <div id="btnn">
+                                    <div id="btnDisplay">
+                                        <img src="images/buttonen.png" height="60px" title="Click to Sumbit answer" />
+                                        <span id="spanbtn"><input type="image" src="images/buttonen2.png" id="btn_en" onclick="doEncrypt(true);" height="60px"></span>
+                                    </div>
+
+                                    <div id="btnDisplay">
+                                        <img src="images/buttonde.png" height="60px" title="Click to Sumbit answer" style="margin-left: 20px;" />
+                                        <span id="spanbtn"><input type="image" src="images/buttonde2.png" id="btn_de" onclick="doEncrypt(false);" height="60px" style="margin-left: 20px;" /></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+
+                    </table>
+                    
+                    <div id="word">Numeral Example:
+                        <div id="exampleBg">
+                            Key in English: (16 ASCII characters, 1 byte each). <br>
+                            Turn it into Hex. <br>
+                            <textarea id="egkey" maxlength="16" placeholder="Input a key"></textarea>
+                            <button id="btn_egKey" onclick="example(1)"></button><br>
+
+                            <span id="ktable"></span> <br>
+
+                            Plaintext in English: (16 ASCII characters, 1 byte each) <br>
+                            Then, turn it into Hex:<br>
+                            <textarea id="egplain" maxlength="16" placeholder="Input a plaintext">Two One Nine Two</textarea>
+                            <button id="btn_egPlain" onclick="example(0)"></button><br>
+
+                            <span id="plaintable"></span><br>
+                            We got: <br>
+                            w0 = <span id="w0"></span> <br>
+                            w1 = <span id="w1"></span> <br>
+                            w2 = <span id="w2"></span> <br>
+                            w3 = <span id="w3"></span> <br>
+                        </div>
+
+                        <div id="exampleBg">
+                            State = [w0 w1 w2 w3] <br>
+                            Step 1: Find the Byte Substition via SubBytes Table.
+                            <a id="sbox" style="font-size: 14px;"> &emsp;&emsp;Click here to see SubBytes Table</a> <br>
+                        </div>
+
+                        <div id="exampleBg">
+                            Step 2: ShiftRows according to the rules. <br>
+                        </div>
+
+                        <div id="exampleBg">
+                            Step 3: MixColumn of state matrix and the constant C so that: <br>
+                            <img src="images/mixcol.png"><br>
+                            Let [a<sub>0</sub> a<sub>1</sub> a<sub>2</sub> a<sub>3</sub>] = [63 F2 7D D4] <br>
+                            We have: [02 03 01 01] * [63 F2 7D D4] <br>
+                            = 02*63 ⊕ 03*F2 ⊕ 01*7D ⊕ 01*D4 <br>
+
+                            <table id="exampleTable">
+                                <tr>
+                                    <th>02*63 :</th>
+                                    <th></th>
+                                    <th>03*F2 :</th>
+                                </tr>
+                                <tr>
+                                    <td>02 = 0000 0010 = x</td>
+                                    <td>&emsp;&emsp;</td>
+                                    <td>03 = 0000 0011 = x + 1</td>
+                                </tr>
+                                <tr>
+                                    <td>63 = 0110 0011 = x<sup>6</sup> + x<sup>5</sup> + x + 1 </td>
+                                    <td>&nbsp;</td>
+                                    <td>F2 = 1111 0010 = x<sup>7</sup> + x<sup>6</sup> + x<sup>5</sup> + x<sup>4</sup> + x </td>
+                                </tr>
+                                <tr>
+                                    <td>02*63 = x * (x<sup>6</sup> + x<sup>5</sup> + x + 1)</td>
+                                    <td>&nbsp;</td>
+                                    <td>03*F2 = (x + 1)*(x<sup>7</sup> + x<sup>6</sup> + x<sup>5</sup> + x<sup>4</sup> + x)</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;&emsp;&emsp;&emsp;= x<sup>7</sup> + x<sup>6</sup> + x<sup>2</sup> + x </td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;&emsp;&emsp;&emsp;= x<sup>8</sup> + x<sup>4</sup> + x<sup>2</sup> + x</td>
+                                </tr>
+                                <tr>
+                                    <td>It corresponds to 1100 0110 = C6</td>
+                                    <td>&nbsp;</td>
+                                    <td>Then divide the result by x<sup>8</sup> + x<sup>4</sup> + x<sup>3</sup> + x + 1 <br> (irreducible polynomial)</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>&nbsp;</td>
+                                    <td>The remainder is the result = x<sup>3</sup> + x<sup>2</sup> + 1 <br>
+                                        It corresponds to 0000 1101 = 0D</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div id="exampleBg">
+                            Step 4: How can we get the round key? <br>
+                            Given the cipher key (24 75 A2 B3 34 75 56 88 21 E2 12 00 13 AA 54 87) <sub>16</sub><br>
+                            w[0] = 24 75 A2 B3 <br>
+                            w[1] = 34 75 56 88 <br>
+                            w[2] = 31 E2 12 00 <br>
+                            w[3] = 13 AA 54 87 <br>
+
+                            Calculate t<sub>4</sub> (Round key for round 1): <br>
+                            Inout w[3] = 13 AA 54 87 <br>
+                            RotWord = AA 54 87 13 (shift 1 bit)<br>
+                            SubWord = SubBytes(AA 54 87 13) = (AC 20 17 7D) <br>
+                            Rcon (4/4) = 01 00 00 00 <br>
+                            (AC 20 17 7D) ⊕ (01 00 00 00) = AD 20 17 7D <br>
+                            <br>
+                            You can keep adding (i.e. xor) a round key with each state column matrix that done in step 3.<br>
+                        </div>
+                    </div>
+
+
+
+                </div> <!-- main_container -->
+
+            </div>
+
+            <div id="footer">
+                <center>
+                    <br><br><br>
+                    <p>Share to...</p>
+                    <br>
+                    <button style="background: url(images/facebook.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.facebook.com/sharer/sharer.php?u=https://ngkayuen05.github.io/cryptography/'"></button>
+
+                    <button style="background: url(images/instagram.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.instagram.com/?hl=zh-hk'"></button>
+
+                    <button style="background: url(images/github.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://github.com/'"></button>
+
+                    <button style="background: url(images/share.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;"></button>
+                </center>
+            </div> <!-- footer -->
+
+        </div> <!-- container -->
+    </div> <!-- wrap -->
+
+    <button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+    <script type="text/javascript" src="js/topButton.js"></script>
+
+</body></html>

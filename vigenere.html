@@ -1,0 +1,128 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Vigenere</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/all.js"></script>
+
+    <script type="text/javascript" src="js/vigenere.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/vigenere.css">
+
+    <!-- sweet alert -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.2.0/sweetalert2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.2.0/sweetalert2.min.js"></script>
+
+    <!-- animatee.css -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+
+</head>
+
+<body onload="keyTable();">
+    <div id="wrap">
+        <div id="container">
+            <div id="header">
+                <!--圖-->
+                <ul id="menu">
+                    <li id="home"><a title="Home" class="link" href="index.html">Home</a></li>
+                    <li id="game"><a title="Game" class="link" href="game/gindex.html">Game</a></li>
+                    <li id="dict"><a title="Dict" class="link" href="dict.html">Dictionary</a></li>
+                    <li id="useful"><a title="Useful" class="link" href="useful.html">Useful Links</a></li>
+                </ul>
+            </div> <!-- header -->
+
+
+            <div id="main">
+                <div class="animated slideInDown faster">
+                    <div class="box">
+                        <button type="button" class="updown" id="btn" onclick="updown();"></button>
+                        <div class="content">
+                            <h1> Introduction </h1>
+
+                            <p> Vigenère Cipher is a polyalphabetic cipher which is using multiple substitution alphabets. It is an evolution of the <a href="caesar.html">Caesar Cipher</a>. Encryption and decryption are done based on the letters of a secret key as well as the encryption table (also call Vigenère square). Usually, the Vigenère square sizes 26x26. Each column and row contain A-Z alphabets while each alphabet shifted one position cyclically to the left as the rows progress downwards.</p>
+
+                            <h1> Method </h1>
+                            <ol>
+                                <li>Finalizing the plaintext </li>
+                                <li> Choosing a secret key</li>
+                                <li> Repeating the secret key so that its length can match with plaintext.</li>
+                                <li>Comparing the plaintext alphabet and key alphabet with the Vigenere table.</li>
+                            </ol>
+
+                            <h1> Mathematical Description </h1>
+
+                            <p> Each letter can represent with numbers, i.e. 'A'=0, 'B'=1, 'C'=2, ... , 'Z'=25. Vigenère cipher encryption E using the key K can be represented mathematically as </p>
+                            <p style="text-align: center"> <span id=popWord> C<sub>i</sub> = (P<sub>i</sub> + K<sub>i</sub>) mod 26 </span></p>
+                            <p> Similarly, decryption D using the key K can be written as: </p>
+                            <p style="text-align: center"><span id=popWord> P<sub>i</sub> = (C<sub>i</sub> - K<sub>i</sub>) mod 26 </span></p>
+                            <p> In which P = P<sub>1</sub> …P<sub>n</sub> is Plaintext, C = C<sub>1</sub> … C<sub>n</sub> is Ciphertext.</p>
+                        </div>
+                    </div>
+                </div> <!-- animated slideInDown faster -->
+
+                <div id="main_container">
+                    <div id="vigTable">
+                        <table id="vtable" class="highlight" border="1"></table>
+                    </div>
+
+                    <div id="converter">
+
+                        KEY = <input type="text" id="keys" size="35" maxlength="15" placeholder="Please enter a key here first~" value="key" />
+                        <br>
+
+                        <p id="topic"><b>Plaintext</b></p>
+
+                        <textarea id="plaintext" onkeyup="Encode();" placeholder="Please enter plaintext here~"></textarea>
+                        <br><br>
+
+                        <p id="topic"><b>Ciphertext</b></p>
+                        <textarea id="ciphertext" onkeyup="Decode();" placeholder="Please enter ciphertext here~"></textarea>
+                        <br><br>
+
+                        <div id="btnn">
+                            <div id="btnDisplay">
+                                <img src="images/buttonen.png" height="60px" />
+                                <span id="spanbtn"><input type="image" src="images/buttonen2.png" id="encode" height="60px"></span>
+                            </div>
+
+                            <div id="btnDisplay">
+                                <img src="images/buttonde.png" height="60px" style="margin-left: 20px;" />
+                                <span id="spanbtn"><input type="image" src="images/buttonde2.png" id="decode" height="60px" style="margin-left: 20px;" /></span>
+                            </div>
+
+                            <div id="btnDisplay">
+                                <img src="images/buttonclear.png" height="60px" style="margin-left: 20px;" />
+                                <span id="spanbtn"><input type="image" src="images/buttonclear2.png" id="Clear" onclick="clearAll();" height="60px" style="margin-left: 20px;" /></span>
+                            </div>
+                        </div>
+
+                        <div id="msg" style="display:; float: left;"></div>
+                        <br>
+
+                    </div>
+                </div> <!-- main_container -->
+            </div>
+
+            <div id="footer">
+                <center>
+                    <br><br><br>
+                    <p>Share to...</p>
+                    <br>
+                    <button style="background: url(images/facebook.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.facebook.com/sharer/sharer.php?u=https://ngkayuen05.github.io/cryptography/'"></button>
+
+                    <button style="background: url(images/instagram.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.instagram.com/?hl=zh-hk'"></button>
+
+                    <button style="background: url(images/github.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://github.com/'"></button>
+
+                    <button style="background: url(images/share.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;"></button>
+                </center>
+            </div> <!-- footer -->
+
+        </div> <!-- container -->
+    </div> <!-- wrap -->
+
+    <button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+    <script type="text/javascript" src="js/topButton.js"></script>
+
+</body></html>

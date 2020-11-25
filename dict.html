@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Dictionary</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/all.js"></script>
+
+    <script type="text/javascript" src="js/dict.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/dict.css">
+
+</head>
+
+<body onload="init();">
+    <div id="wrap">
+        <div id="container">
+            <div id="header">
+                <!--圖-->
+                <ul id="menu">
+                    <li id="home"><a title="Home" class="link" href="index.html">Home</a></li>
+                    <li id="game"><a title="Game" class="link" href="game/gindex.html">Game</a></li>
+                    <li id="dict"><a title="Dict" class="link" href="dict.html">Dictionary</a></li>
+                    <li id="useful"><a title="Useful" class="link" href="useful.html">Useful Links</a></li>
+                </ul>
+            </div> <!-- header -->
+
+
+            <div id="main">
+
+                <div class="wrapper">
+                    <div class="words">
+                        <input type="text" id="search" placeholder="search:)">
+                        <span id="btn_clear"><button onclick="clearAll();">&times;</button></span>
+                        <span id="btn_search"><button onclick="search();">Go!</button></span>
+                        <ul id="word_list"></ul>
+                    </div>
+
+                    <div class="word">
+                        <h3 id="word_text">Dictionary
+                            <button id="sound"></button>
+                        </h3>
+                        <p id="def">This is a Dictionary page. </p>
+                        <p id="def">You can find out the definitions about Cryptography. </p>
+
+                        <div class="re">
+                            <hr>
+                            <h3>Related pages</h3>
+                            <div id="related">Related pages will be shown here.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="footer">
+                <center>
+                    <br><br><br>
+                    <p>Share to...</p>
+                    <br>
+                    <button style="background: url(images/facebook.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.facebook.com/sharer/sharer.php?u=https://ngkayuen05.github.io/cryptography/'"></button>
+
+                    <button style="background: url(images/instagram.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.instagram.com/?hl=zh-hk'"></button>
+
+                    <button style="background: url(images/github.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://github.com/'"></button>
+
+                    <button style="background: url(images/share.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;"></button>
+                </center>
+            </div> <!-- footer -->
+
+        </div> <!-- container -->
+    </div> <!-- wrap -->
+
+    <button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+    <script type="text/javascript" src="js/topButton.js"></script>
+
+</body></html>

@@ -1,0 +1,122 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Playfair</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/all.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/playfair.css">
+    <script type="text/javascript" src='js/playfair.js'></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="container">
+            <div id="header">
+                <!--圖-->
+                <ul id="menu">
+                    <li id="home"><a title="Home" class="link" href="index.html">Home</a></li>
+                    <li id="game"><a title="Game" class="link" href="game/gindex.html">Game</a></li>
+                    <li id="dict"><a title="Dict" class="link" href="dict.html">Dictionary</a></li>
+                    <li id="useful"><a title="Useful" class="link" href="useful.html">Useful Links</a></li>
+                </ul>
+            </div> <!-- header -->
+
+            <div id="main">
+
+                <div class="animated slideInDown faster">
+                    <div class="box">
+                        <button type="button" class="updown" id="btn" onclick="updown();"></button>
+                        <div class="content">
+                            <h1> Introduction </h1>
+
+                            <p> Playfair cipher is a type of substitution cipher. It involves creating key tables that arrange the letters into a 5 × 5 square grid, where 'J' usually combine as 'I' since the letter 'J' is seldom contained in words. The keyword is in front of the alphabet. For example, keyword = “Cryptography”, the key table look like this: </p>
+                            <img src="images/play_table.png" id="img1">
+
+                            <h1> Algorithm Description </h1>
+                            <ol>
+                                <li> Break the plaintext into a two-letter bit </li>
+                                <li> Encrypt or decrypt it by transpose the two-letter bit on the key table
+                                    <ol type="i">
+                                        <li>If letters are on the <span id=popWord>same column</span>, replace them with the letters below for encryption and above for decryption.</li>
+                                        <li>If letters are on the <span id=popWord>same row</span>, replace them with the letters right for encryption and left for decryption.</li>
+                                        <li>If letters <span id=popWord>are not on the same row or column</span>, replace them with the letters in a diagonal location by the plaintext order.</li>
+                                        <li>If <span id=popWord>either letters are the same</span> or <span id=popWord>only one letter is left</span> at the end, replace the last character as 'X' and continue running the algorithm program.</li>
+                                    </ol>
+                                </li>
+                                <li>Gather all the two-letter bit ciphertext</li>
+                            </ol>
+
+                            <div class="info" onclick="info()">
+                                <img src="images/info.png">
+                                <span class="example" id="example">
+                                    <p style="margin: 20px 0 0 15px; font-size: 15px;">Here is an example: &emsp;&emsp;Plaintext = "HELLO" </p>
+                                    <img src="images/playpop.gif" id="img2">
+                                </span> <!-- example -->
+                            </div> <!-- info -->
+
+                        </div>
+                    </div>
+                </div> <!-- animated slideInDown faster -->
+
+                <div id="main_container">
+                    <div id="keyTable">
+                        <span style="opacity: 0;"><tt id="keyString"></tt></span>
+
+                        <div id="tstyle">
+                            <span id=alphabet>
+                                <tt>
+                                    A B C D E<br>
+                                    F G H I K<br>
+                                    L M N O P<br>
+                                    Q R S T U<br>
+                                    V W X Y Z
+                                </tt>
+                            </span>
+                        </div>
+                        <br>
+                        <textarea id="keyword" cols="20" rows="5" style="width:13em; height:2em;" placeholder="Type your keyword here..." onkeyup="genKey();updateTable()"></textarea>
+                    </div>
+
+                    <div id="msg">
+                        <p id="topic">Input</p>
+                        <textarea id="inputMsg" placeholder="Enter your message" onkeyup="Playfair()"></textarea>
+
+                        <p id="topic">Result</p>
+                        <textarea id="result"></textarea>
+
+                        <div id="btnn">
+                            <div id="btnDisplay">
+                                <img src="images/buttonclear.png" height="60px" title="Click to Sumbit answer" />
+                                <span id="spanbtn"><input type="image" src="images/buttonclear2.png" id="btn_clr" onclick="clearAll();" height="60px" /></span>
+                            </div>
+                        </div> <!-- btnn -->
+                    </div> <!-- msg -->
+                    
+                </div> <!-- main_container -->
+            </div>
+
+            <div id="footer">
+                <center>
+                    <br><br><br>
+                    <p>Share to...</p>
+                    <br>
+                    <button style="background: url(images/facebook.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.facebook.com/sharer/sharer.php?u=https://ngkayuen05.github.io/cryptography/'"></button>
+
+                    <button style="background: url(images/instagram.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://www.instagram.com/?hl=zh-hk'"></button>
+
+                    <button style="background: url(images/github.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;" onclick="window.location.href='https://github.com/'"></button>
+
+                    <button style="background: url(images/share.png); height: 64px; width: 64px; background-size: 64px; border: none; cursor: pointer;"></button>
+                </center>
+            </div> <!-- footer -->
+            
+        </div> <!-- container -->
+    </div> <!-- wrap -->
+
+    <button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+    <script type="text/javascript" src="js/topButton.js"></script>
+
+</body></html>

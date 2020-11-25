@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'kongtextRegular';
+  src: url('kongtextRegular.ttf') format("truetype"),
+      url('kongtextrRgular.woff') format("woff"),
+      url('kongtextrRgular.svg#kongtextrRgular') format('svg');
+}
+
+#start {
+    text-align:center;
+    padding: 110px 10px 0px 10px;
+    width: 900px;
+    height: 620px;
+    background: url("game_img/game_bg.png");
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+#start a {
+    font-size: 50px;
+    font-family: kongtextRegular;
+    
+}
+
+#instruction {
+    margin: 20px;
+    line-height: 40px;
+    font-family: kongtextRegular;
+    font-size: 20px;
+}
